@@ -10,6 +10,7 @@ const todoSlice = createSlice({
         addTodo(state, action) {
             console.log("add:::", state, action);
             state.push(action.payload)
+            
         }
     }
 })
