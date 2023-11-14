@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import AddTodo from "./compoments/AddTodo";
+import Todos from "./compoments/Todos";
 
 
 function App() {
@@ -7,7 +8,10 @@ function App() {
   console.log(store);
   return (
     <>
-      <AddTodo />
+      <section className="todoapp">
+        <AddTodo />
+        <Todos />
+      </section>
     </>
   )
 }

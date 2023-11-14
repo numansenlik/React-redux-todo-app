@@ -4,6 +4,6 @@ import todoReducer from "./todo/todoSlice";
 
 export const store = configureStore({
     reducer: {
-        addTodo: todoReducer
+        todos: todoReducer
     }
 })
