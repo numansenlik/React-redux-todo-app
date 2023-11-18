@@ -9,6 +9,7 @@ function AddTodo() {
         event.preventDefault();
         const inputValue = { done: false, text: event.target.elements[0].value }
         dispatch(addTodo(inputValue));
+        event.target.firstChild.value = "";
     }
 
     return (

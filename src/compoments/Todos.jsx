@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
-import { removeTodo } from "../store/todo/todoSlice";
+import { changeChecked, removeTodo } from "../store/todo/todoSlice";
+import { useState } from "react";
 
 function Todos() {
     const todos = useSelector(state => state.todos)
@@ -13,9 +14,9 @@ function Todos() {
                 </label>
                 <ul className="todo-list">
                     {todos.map((item, index) =>
-                        <li key={index}>
+                        <li key={index} className={item.done ? "completed" : ""}>
                             <div className="wiew">
-                                <input className="toggle" type="checkbox"  />
+                                <input className="toggle" type="checkbox" checked={item.done} onChange={() => dispatch(changeChecked(index))} />
                                 <label>{item.text}</label>
                                 <button className="destroy" onClick={() => dispatch(removeTodo(index))}></button>
                             </div>
