@@ -7,9 +7,11 @@ function AddTodo() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        const inputValue = { done: false, text: event.target.elements[0].value }
-        dispatch(addTodo(inputValue));
-        event.target.firstChild.value = "";
+        const inputValue = event.target.elements[0].value.trim();
+        if (inputValue !== '') {
+            dispatch(addTodo({ done: false, text: inputValue }));
+            event.target.firstChild.value = "";
+        }
     }
 
     return (

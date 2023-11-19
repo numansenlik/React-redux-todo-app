@@ -12,15 +12,24 @@ const todoSlice = createSlice({
         },
         removeTodo(state, action) {
             console.log(action);
-            state.splice(action.payload,1)
+            state.splice(action.payload, 1)
         },
-        changeChecked(state,action){
+        changeChecked(state, action) {
             return state.map((todo, index) =>
-            index === action.payload ? { ...todo, done: !todo.done } : todo
-          );
-        }
-    }
-})
-
-export const { addTodo, removeTodo, changeChecked } = todoSlice.actions
+                index === action.payload ? { ...todo, done: !todo.done } : todo
+            );
+        },
+        clearCompleted(state) {
+            return state.filter((todo) => !todo.done);
+        },
+        toggleAll(state, action) {
+            const allCompleted = state.every((todo) => todo.done);
+            return state.map((todo) => ({
+              ...todo,
+              done: !allCompleted,
+            }));
+          },
+        },
+      });
+export const { addTodo, removeTodo, changeChecked, clearCompleted, toggleAll } = todoSlice.actions
 export default todoSlice.reducer
